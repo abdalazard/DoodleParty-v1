@@ -1,10 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Text, View, TextInput, Button, TouchableOpacity, Image, StyleSheet, BackHandler} from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, StyleSheet, BackHandler} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import { getApiUrl } from './utils/api';
 import styles from '../style';
 import Card from './Components/Card';
 import Modal from './Components/Modal';
+import Logo from './Components/Logo';
 
 export default function Auth({ setIsAuthenticated, navigation }) {
     const [email, setEmail] = useState('');
@@ -86,24 +87,21 @@ export default function Auth({ setIsAuthenticated, navigation }) {
         setModalVisible(false);
     };
 
-    
-
     return (
         <View style={styles.container}>
-            <Image 
-                style={{...styles.logo, width: anyFieldFocused ? 0 : 400, height: anyFieldFocused ? 0 : 150, opacity: anyFieldFocused ? 0 : 1}}
-                source={require('../assets/logo.png')} 
-            />
+            <Logo />
             <Card estilo={estilo.card}>
-                <Text style={styles.cardText}>E-mail</Text>
+                <Text style={{color: "#ffff" }}>E-mail</Text>
                 <TextInput onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
                 <Text style={styles.cardText}>Password</Text>
                 <TextInput onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
-                <Button title="Log In" onPress={login} />
-                
+                <TouchableOpacity style={{backgroundColor: '#ffff', color:'#00000', padding: 10, width:100, borderRadius:50, marginTop: 20}} onPress={login}>
+                    <Text style={{textAlign:'center'}}>Login</Text>
+                </TouchableOpacity>                
             </Card>
-            <TouchableOpacity onPress={() => navigation.navigate('CreateUser')} style={{ opacity: anyFieldFocused ? 0 : 1}}>
-                <Text style={estilo.linkText}>Create NewUser</Text>
+
+            <TouchableOpacity style={{backgroundColor: 'black', padding: 10, width:100, borderRadius:50, marginBottom:50}} onPress={() => navigation.navigate('CreateUser')} >
+                <Text style={{color:'#ffff', textAlign:'center'}}>Register</Text>
             </TouchableOpacity>
             <Modal modalTitle={estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={"Me cadastrar"} buttonTitleStyle={estilo.buttonTitleError}>
                 <Text style={estilo.modalText}>{modalText}</Text>
@@ -116,10 +114,9 @@ const estilo = StyleSheet.create({
     card: {
         padding: 20,
         borderRadius: 10,
-        backgroundColor: '#57894E',
+        backgroundColor: '#000000',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 280,
         maxWidth: 500,
     },
     modalText: {
@@ -159,10 +156,5 @@ const estilo = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 60,
     },
-    linkText: {
-        color: '#0000ff',
-        marginBottom: 100,
-        textAlign: 'center',
-        fontSize: 15,
-      },
+
 });

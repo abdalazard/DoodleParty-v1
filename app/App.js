@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, {useState, useEffect} from 'react';
-import Auth from './src/Auth';
 import CreateUser from './src/CreateUser';
 import Home from './src/pages/Home';
 
@@ -30,3 +29,4 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
