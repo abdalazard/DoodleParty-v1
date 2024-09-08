@@ -9,6 +9,7 @@ import Logo from './Components/Logo';
 import { NativeWindStyleSheet } from "nativewind";
 import BotaoBranco from './Components/BotaoBranco';
 import BotaoPreto from './Components/BotaoPreto';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function Auth({ setIsAuthenticated, navigation }) {
     const [email, setEmail] = useState('');
@@ -95,12 +96,14 @@ export default function Auth({ setIsAuthenticated, navigation }) {
     };
 
     return (
-        <View className="container flex items-center justify-center flex-1 bg-white">
-            <Logo />
+        <ScrollView className="mt-20">
+            <View className="items-center mt-10 mb-10">
+                <Logo />
+            </View>
             <Card>
                 <Text className="text-white text-start">E-mail</Text>
                 <TextInput onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
-                <Text className="text-white text-start">Password</Text>
+                <Text className="text-white">Password</Text>
                 <TextInput onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
                 <View className="mt-5">
                     <BotaoBranco
@@ -109,14 +112,17 @@ export default function Auth({ setIsAuthenticated, navigation }) {
                     />
                 </View>                
             </Card>
-            <BotaoPreto
-                name="Cadastro"
-                onPress={() => navigation.navigate('CreateUser')} 
-            />
+            <View className="items-center mt-10">
+                <BotaoPreto
+                    name="Cadastro"
+                    onPress={() => navigation.navigate('CreateUser')} 
+                />
+            </View>
+            
             <Modal modalTitle={estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={"Me cadastrar"} buttonTitleStyle={estilo.buttonTitleError}>
                 <Text style={estilo.modalText}>{modalText}</Text>
             </Modal>
-        </View>
+        </ScrollView>
     );
 }
 

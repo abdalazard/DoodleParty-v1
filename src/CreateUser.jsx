@@ -7,6 +7,7 @@ import Modal from './Components/Modal';
 import Logo from './Components/Logo';
 import BotaoBranco from './Components/BotaoBranco';
 import BotaoPreto from './Components/BotaoPreto';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function CreateUser({ navigation }) {
     const [name, setName] = useState(''); 
@@ -151,16 +152,15 @@ export default function CreateUser({ navigation }) {
     };
 
     return (
-        <View className="container flex items-center justify-center flex-1 p-6 bg-white">
-            {messageError ? <Text style={estilo.messageError}>{messageError}</Text> : ''}
+        <ScrollView>
             <View className="items-center mb-10">
                 <Logo />
             </View>
-            {/* <KeyboardAvoidingView 
+            {messageError ? <Text style={estilo.messageError}>{messageError}</Text> : ''}
+            <KeyboardAvoidingView 
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 keyboardVerticalOffset={50}
-            > */}
-                
+            >                
                 <Card>
                     <Text className="text-white text-start">Username</Text>
                     <TextInput onFocus={() => handleFocus('name')} onBlur={() => handleBlur('name')} style={[styles.input, {borderColor: isNameFocused ? 'blue' : 'gray'}]} onChangeText={setName} value={name}/>
@@ -170,13 +170,15 @@ export default function CreateUser({ navigation }) {
                     <TextInput onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
                     <Text className="text-white text-start">Password confirmation</Text>
                     <TextInput onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[styles.input, {borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
-                    <BotaoBranco
-                        name="Registro" 
-                        onPress={register}
-                    />
+                    <View className="items-center mt-10">
+                        <BotaoBranco
+                            name="Registro" 
+                            onPress={register}
+                        />
+                    </View>
                 </Card>
-            {/* </KeyboardAvoidingView> */}
-            <View>
+            </KeyboardAvoidingView>
+            <View className="items-center mt-10">
                 <BotaoPreto
                     name="Log In" 
                     onPress={() => navigation.navigate('Auth')}
@@ -186,7 +188,7 @@ export default function CreateUser({ navigation }) {
             <Modal modalTitle={requestSuccess ? estilo.modalTitle : estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={requestSuccess ? "Fazer login." : "Tentar cadastro."} buttonTitleStyle={requestSuccess ? estilo.buttonTitle : estilo.buttonTitleError}>
                 <Text style={estilo.modalText}>{modalText}</Text>
             </Modal>            
-        </View>
+        </ScrollView>
     );
 }    
 
