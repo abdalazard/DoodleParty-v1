@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react';
 import Auth from './src/Auth';
 import CreateUser from './src/CreateUser';
 import Home from './src/pages/Home';
+import { NativeWindStyleSheet } from "nativewind";
 
 const AuthStack = createStackNavigator();
 const AppStack = createStackNavigator();
@@ -11,6 +12,10 @@ const AppStack = createStackNavigator();
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [initialRoute, setInitialRoute] = useState('Auth');
+
+  NativeWindStyleSheet.setOutput({
+    default: "native",
+  });
 
   useEffect(() => {
     if (isAuthenticated) {

@@ -6,6 +6,9 @@ import styles from '../style';
 import Card from './Components/Card';
 import Modal from './Components/Modal';
 import Logo from './Components/Logo';
+import { NativeWindStyleSheet } from "nativewind";
+import BotaoBranco from './Components/BotaoBranco';
+import BotaoPreto from './Components/BotaoPreto';
 
 export default function Auth({ setIsAuthenticated, navigation }) {
     const [email, setEmail] = useState('');
@@ -19,6 +22,10 @@ export default function Auth({ setIsAuthenticated, navigation }) {
 
     const [anyFieldFocused, setAnyFieldFocused] = useState(false);
     const [focusedField, setFocusedField] = useState(null);
+    
+    NativeWindStyleSheet.setOutput({
+        default: "native",
+    });
 
     const handleFocus = (field) => {
         setFocusedField(field);
@@ -88,21 +95,24 @@ export default function Auth({ setIsAuthenticated, navigation }) {
     };
 
     return (
-        <View style={styles.container}>
+        <View className="container flex items-center justify-center flex-1 bg-white">
             <Logo />
-            <Card estilo={estilo.card}>
-                <Text style={{color: "#ffff" }}>E-mail</Text>
+            <Card>
+                <Text className="text-white text-start">E-mail</Text>
                 <TextInput onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
-                <Text style={styles.cardText}>Password</Text>
+                <Text className="text-white text-start">Password</Text>
                 <TextInput onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
-                <TouchableOpacity style={{backgroundColor: '#ffff', color:'#00000', padding: 10, width:100, borderRadius:50, marginTop: 20}} onPress={login}>
-                    <Text style={{textAlign:'center'}}>Login</Text>
-                </TouchableOpacity>                
+                <View className="mt-5">
+                    <BotaoBranco
+                        name="Login" 
+                        onPress={login}
+                    />
+                </View>                
             </Card>
-
-            <TouchableOpacity style={{backgroundColor: 'black', padding: 10, width:100, borderRadius:50, marginBottom:50}} onPress={() => navigation.navigate('CreateUser')} >
-                <Text style={{color:'#ffff', textAlign:'center'}}>Register</Text>
-            </TouchableOpacity>
+            <BotaoPreto
+                name="Cadastro"
+                onPress={() => navigation.navigate('CreateUser')} 
+            />
             <Modal modalTitle={estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={"Me cadastrar"} buttonTitleStyle={estilo.buttonTitleError}>
                 <Text style={estilo.modalText}>{modalText}</Text>
             </Modal>
@@ -111,14 +121,6 @@ export default function Auth({ setIsAuthenticated, navigation }) {
 }
 
 const estilo = StyleSheet.create({
-    card: {
-        padding: 20,
-        borderRadius: 10,
-        backgroundColor: '#000000',
-        alignItems: 'center',
-        justifyContent: 'center',
-        maxWidth: 500,
-    },
     modalText: {
         fontSize: 20,
         textAlign: 'center',

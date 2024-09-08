@@ -1,9 +1,12 @@
 import { Text, View, TextInput, Button, TouchableOpacity, Image, KeyboardAvoidingView, StyleSheet, BackHandler } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import styles from '../style.jsx';
+import styles from '../style';
 import Card from './Components/Card';
-import { getApiUrl } from './utils/api.js';
+import { getApiUrl } from './utils/api';
 import Modal from './Components/Modal';
+import Logo from './Components/Logo';
+import BotaoBranco from './Components/BotaoBranco';
+import BotaoPreto from './Components/BotaoPreto';
 
 export default function CreateUser({ navigation }) {
     const [name, setName] = useState(''); 
@@ -148,31 +151,38 @@ export default function CreateUser({ navigation }) {
     };
 
     return (
-        <View style={styles.container}>
-            <Image 
-                style={{...styles.logo, width: anyFieldFocused ? 0 : 400, height: anyFieldFocused ? 0 : 150, opacity: anyFieldFocused ? 0 : 1}}
-                source={require('../assets/logo.png')} 
-            />
-            <Text style={estilo.messageError}>{messageError}</Text>
-            <KeyboardAvoidingView 
-                behavior={Platform.OS === "ios" ? "padding" : "height"} 
-                style={styles.container}
-                keyboardVerticalOffset={50}>
-                <Card estilo={estilo.card}>
-                    <Text style={styles.cardText}>Username</Text>
+        <View className="container flex items-center justify-center flex-1 p-6 bg-white">
+            {messageError ? <Text style={estilo.messageError}>{messageError}</Text> : ''}
+            <View className="items-center mb-10">
+                <Logo />
+            </View>
+            {/* <KeyboardAvoidingView 
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                keyboardVerticalOffset={50}
+            > */}
+                
+                <Card>
+                    <Text className="text-white text-start">Username</Text>
                     <TextInput onFocus={() => handleFocus('name')} onBlur={() => handleBlur('name')} style={[styles.input, {borderColor: isNameFocused ? 'blue' : 'gray'}]} onChangeText={setName} value={name}/>
-                    <Text style={styles.cardText}>E-mail</Text>
+                    <Text className="text-white text-start">E-mail</Text>
                     <TextInput onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
-                    <Text style={styles.cardText}>Password</Text>
+                    <Text className="text-white text-start">Password</Text>
                     <TextInput onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
-                    <Text style={styles.cardText}>Password confirmation</Text>
+                    <Text className="text-white text-start">Password confirmation</Text>
                     <TextInput onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[styles.input, {borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
-                    <Button title="Register" onPress={register} />
+                    <BotaoBranco
+                        name="Registro" 
+                        onPress={register}
+                    />
                 </Card>
-            </KeyboardAvoidingView>
-            <TouchableOpacity onPress={() => navigation.navigate('Auth')} style={{ opacity: anyFieldFocused ? 0 : 1}}>
-                <Text style={estilo.linkText}>Log In</Text>
-            </TouchableOpacity>
+            {/* </KeyboardAvoidingView> */}
+            <View>
+                <BotaoPreto
+                    name="Log In" 
+                    onPress={() => navigation.navigate('Auth')}
+                />
+            </View>            
+            
             <Modal modalTitle={requestSuccess ? estilo.modalTitle : estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={requestSuccess ? "Fazer login." : "Tentar cadastro."} buttonTitleStyle={requestSuccess ? estilo.buttonTitle : estilo.buttonTitleError}>
                 <Text style={estilo.modalText}>{modalText}</Text>
             </Modal>            
@@ -184,13 +194,10 @@ const estilo = StyleSheet.create({
 card: {
     padding: 30,
     borderRadius: 10,
-    backgroundColor: '#57894E',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 420,
-    maxWidth: 500,
-    marginTop: 30
-    },
+    height: 500,
+},
 modalText: {
     fontSize: 20,
     textAlign: 'center',
