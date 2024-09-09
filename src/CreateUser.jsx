@@ -1,12 +1,12 @@
-import { Text, View, TextInput, Button, TouchableOpacity, Image, KeyboardAvoidingView, StyleSheet, BackHandler } from 'react-native';
+import { Text, View, TextInput, StyleSheet, BackHandler } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import styles from '../style';
-import Card from './Components/Card';
+import Card from './Components/Cards/Card';
 import { getApiUrl } from './utils/api';
-import Modal from './Components/Modal';
-import Logo from './Components/Logo';
-import BotaoBranco from './Components/BotaoBranco';
-import BotaoPreto from './Components/BotaoPreto';
+import Modal from './Components/Modal/Modal';
+import Logo from './Components/Logo/';
+import BotaoBranco from './Components/Botoes/BotaoBranco';
+import BotaoPreto from './Components/Botoes/BotaoPreto';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default function CreateUser({ navigation }) {
@@ -152,39 +152,31 @@ export default function CreateUser({ navigation }) {
     };
 
     return (
-        <ScrollView>
-            <View className="items-center mb-10">
-                <Logo />
-            </View>
+        <ScrollView className="bg-black">
+            <Logo/>
             {messageError ? <Text style={estilo.messageError}>{messageError}</Text> : ''}
-            <KeyboardAvoidingView 
-                behavior={Platform.OS === "ios" ? "padding" : "height"}
-                keyboardVerticalOffset={50}
-            >                
-                <Card>
-                    <Text className="text-white text-start">Username</Text>
-                    <TextInput onFocus={() => handleFocus('name')} onBlur={() => handleBlur('name')} style={[styles.input, {borderColor: isNameFocused ? 'blue' : 'gray'}]} onChangeText={setName} value={name}/>
-                    <Text className="text-white text-start">E-mail</Text>
-                    <TextInput onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
-                    <Text className="text-white text-start">Password</Text>
-                    <TextInput onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
-                    <Text className="text-white text-start">Password confirmation</Text>
-                    <TextInput onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[styles.input, {borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
-                    <View className="items-center mt-10">
-                        <BotaoBranco
-                            name="Registro" 
-                            onPress={register}
-                        />
-                    </View>
-                </Card>
-            </KeyboardAvoidingView>
-            <View className="items-center mt-10">
-                <BotaoPreto
-                    name="Log In" 
+            <Card className="mb-5 h-96">
+                <Text className="text-black text-start">Usuário</Text>
+                <TextInput className="text-white" onFocus={() => handleFocus('name')} onBlur={() => handleBlur('name')} style={[styles.input, {borderColor: isNameFocused ? 'blue' : 'gray'}]} onChangeText={setName} value={name}/>
+                <Text className="text-black text-start">E-mail</Text>
+                <TextInput className="text-white" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
+                <Text className="text-black text-start">Senha</Text>
+                <TextInput className="text-white" onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
+                <Text className="text-black text-start">Confirmação sua senha</Text>
+                <TextInput className="text-white" onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[styles.input, {borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
+                <View className="items-center mt-5">
+                    <BotaoPreto
+                        name="Registro" 
+                        onPress={register}
+                    />
+                </View>
+            </Card>
+            <View className="items-center mt-4">
+                <BotaoBranco
+                    name="Acesso" 
                     onPress={() => navigation.navigate('Auth')}
                 />
             </View>            
-            
             <Modal modalTitle={requestSuccess ? estilo.modalTitle : estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={requestSuccess ? "Fazer login." : "Tentar cadastro."} buttonTitleStyle={requestSuccess ? estilo.buttonTitle : estilo.buttonTitleError}>
                 <Text style={estilo.modalText}>{modalText}</Text>
             </Modal>            
@@ -193,18 +185,6 @@ export default function CreateUser({ navigation }) {
 }    
 
 const estilo = StyleSheet.create({
-card: {
-    padding: 30,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 500,
-},
-modalText: {
-    fontSize: 20,
-    textAlign: 'center',
-    marginBottom: 20,
-    },
 buttonTitle: {
     marginTop: 10,
     backgroundColor: 'green',

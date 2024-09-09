@@ -1,14 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Text, View, TextInput, TouchableOpacity, StyleSheet, BackHandler} from 'react-native';
+import { Text, View, TextInput, StyleSheet, BackHandler} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import { getApiUrl } from './utils/api';
 import styles from '../style';
-import Card from './Components/Card';
-import Modal from './Components/Modal';
+import Card from './Components/Cards/Card';
+import Modal from './Components/Modal/Modal';
 import Logo from './Components/Logo';
 import { NativeWindStyleSheet } from "nativewind";
-import BotaoBranco from './Components/BotaoBranco';
-import BotaoPreto from './Components/BotaoPreto';
+import BotaoBranco from './Components/Botoes/BotaoBranco';
+import BotaoPreto from './Components/Botoes/BotaoPreto';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default function Auth({ setIsAuthenticated, navigation }) {
@@ -51,6 +51,7 @@ export default function Auth({ setIsAuthenticated, navigation }) {
             }),
         })
         .then((response) => {
+            alert("Login")
             return response.json();
         })
         .then((data) => {
@@ -96,70 +97,62 @@ export default function Auth({ setIsAuthenticated, navigation }) {
     };
 
     return (
-        <ScrollView className="mt-20">
-            <View className="items-center mt-10 mb-10">
-                <Logo />
-            </View>
+        <ScrollView className="bg-black ">
+            <Logo />
             <Card>
-                <Text className="text-white text-start">E-mail</Text>
-                <TextInput onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
-                <Text className="text-white">Password</Text>
-                <TextInput onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
+                <Text className="text-black text-start">E-mail</Text>
+                <TextInput className="text-white" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
+                <Text className="text-black">Senha</Text>
+                <TextInput className="text-white" onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
                 <View className="mt-5">
-                    <BotaoBranco
-                        name="Login" 
+                    <BotaoPreto
+                        name="Acessar" 
                         onPress={login}
                     />
                 </View>                
             </Card>
             <View className="items-center mt-10">
-                <BotaoPreto
+                <BotaoBranco
                     name="Cadastro"
                     onPress={() => navigation.navigate('CreateUser')} 
                 />
-            </View>
-            
+            </View>            
             <Modal modalTitle={estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={"Me cadastrar"} buttonTitleStyle={estilo.buttonTitleError}>
-                <Text style={estilo.modalText}>{modalText}</Text>
+                <Text className="m-4 text-center text-white">{modalText}</Text>
             </Modal>
         </ScrollView>
     );
 }
 
 const estilo = StyleSheet.create({
-    modalText: {
-        fontSize: 20,
-        textAlign: 'center',
-        marginBottom: 20,
-    },
     buttonTitle: {
         marginTop: 10,
-        backgroundColor: 'green',
+        backgroundColor: '#12e207',
         fontSize: 20,
         borderRadius: 5,
     },
     buttonTitleError: {
         marginTop: 10,
-        backgroundColor: 'green',
+        backgroundColor: '#12e207',
         fontSize: 20,
         borderRadius: 5,
     },
     modalTitle: {
         fontWeight: 'bold',
-        color: 'green',
+        color: '#12e207',
         fontSize: 30,
         textAlign: 'center',
         marginBottom: 20,
     },
     modalTitleError: {
         fontWeight: 'bold',
-        color: 'red',
+        color: '#ff0a0a',
         fontSize: 30,
         textAlign: 'center',
         marginBottom: 20,
     },
     messageError: {
-        color: 'red',
+        color: '#ff0a0a',
         fontSize: 15,
         textAlign: 'center',
         marginBottom: 60,

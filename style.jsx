@@ -3,7 +3,7 @@ import { StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#000000',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -14,13 +14,13 @@ const styles = StyleSheet.create({
 
     },
     cardText: {
-      color: '#fff',
+      color: '#000',
       fontSize: 20,
     },
     input: {
       height: 40,
       width: 280,
-      backgroundColor: '#fff',
+      backgroundColor: '#000',
       borderColor: 'gray',
       borderWidth: 1,
       marginTop: 10,

@@ -1,6 +1,6 @@
 import { Modal as RNModal, TouchableOpacity, View, Text } from 'react-native';
 import React from 'react';
-import styles from '../../style.jsx';
+import styles from '../../../style.jsx';
 
 export default function Modal({ visible, onClose, title, children, buttonTitle, modalTitle, buttonTitleStyle }) {
     return (

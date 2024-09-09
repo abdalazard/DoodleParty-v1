@@ -1,17 +1,17 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-export default function BotaoBranco({ name, onPress }) { // Adicione a prop onPress
+export default function BotaoPreto({ name, onPress }) { 
   return (
     <TouchableOpacity
       onPress={() => {
         console.log('Botão clicado!');
         onPress();
       }}
-      className="w-24 p-4 bg-white rounded-full"
+      className="w-24 p-4 bg-black rounded-full"
 
     >
-      <Text className="text-center text-black">{name}</Text>
+      <Text className="text-center text-white">{name}</Text>
     </TouchableOpacity>
   );
 }
