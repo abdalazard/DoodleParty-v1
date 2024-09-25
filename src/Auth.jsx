@@ -23,7 +23,9 @@ export default function Auth({ setIsAuthenticated, navigation }) {
 
     const [anyFieldFocused, setAnyFieldFocused] = useState(false);
     const [focusedField, setFocusedField] = useState(null);
+
     
+
     NativeWindStyleSheet.setOutput({
         default: "native",
     });
@@ -39,41 +41,41 @@ export default function Auth({ setIsAuthenticated, navigation }) {
         }
     };
     
-    const login = () => {
-        fetch(getApiUrl("login"), { 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            }),
-        })
-        .then((response) => {
-            alert("Login")
-            return response.json();
-        })
-        .then((data) => {
-            if(data.message == "Unauthorized") {
-                setModalMessage('Acesso não autorizado!');
-                setModalVisible(true);
-                setModalText("Verifique de os dados inseridos por você estão de acordo com os registrados.  \n :(");
-            }
-            else {
-                console.log("Sucesso!");
-                AsyncStorage.setItem('token', data.token);
-                setIsAuthenticated(true);
-                navigation.navigate('Home');
-            }
-        })        
-        .catch((error) => {
-            console.log("Sua requisição deu erro! Codigo:" + error);
-            setModalMessage('Sua requisição deu erro!');
-            setModalVisible(true);
-            setModalText('Um erro na requisição impediu seu acesso! \n :(');
-        });
-    };
+    // const login = () => {
+    //     fetch(getApiUrl("login"), { 
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({
+    //             email: email,
+    //             password: password,
+    //         }),
+    //     })
+    //     .then((response) => {
+    //         alert("Login")
+    //         return response.json();
+    //     })
+    //     .then((data) => {
+    //         if(data.message == "Unauthorized") {
+    //             setModalMessage('Acesso não autorizado!');
+    //             setModalVisible(true);
+    //             setModalText("Verifique de os dados inseridos por você estão de acordo com os registrados.  \n :(");
+    //         }
+    //         else {
+    //             console.log("Sucesso!");
+    //             AsyncStorage.setItem('token', data.token);
+    //             setIsAuthenticated(true);
+    //             navigation.navigate('Home');
+    //         }
+    //     })        
+    //     .catch((error) => {
+    //         console.log("Sua requisição deu erro! Codigo:" + error);
+    //         setModalMessage('Sua requisição deu erro!');
+    //         setModalVisible(true);
+    //         setModalText('Um erro na requisição impediu seu acesso! \n :(');
+    //     });
+    // };
 
     useEffect(() => {
         const backAction = () => {
@@ -94,6 +96,26 @@ export default function Auth({ setIsAuthenticated, navigation }) {
 
     const handleModalClose = () => {
         setModalVisible(false);
+    };
+
+    
+    
+    const users = {
+        "id": 1,
+        "email": "1",
+        "senha": "1"
+    }
+    const login = () => {
+        
+        if (users.email === email && users.senha === password) { 
+            console.log("Success!");
+            setIsAuthenticated(true);
+            navigation.navigate('Home'); 
+        } else {
+            setModalMessage('Acesso não autorizado!');
+            setModalVisible(true);
+            setModalText("Verifique de os dados inseridos por você estão de acordo com os registrados.  \n :(");
+        }
     };
 
     return (
