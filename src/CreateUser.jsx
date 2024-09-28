@@ -152,20 +152,20 @@ export default function CreateUser({ navigation }) {
     };
 
     return (
-        <ScrollView className="bg-black">
+        <ScrollView className="bg-gray-200">
             <Logo/>
             {messageError ? <Text style={estilo.messageError}>{messageError}</Text> : ''}
             <Card className="mb-5 h-96">
                 <Text className="text-black text-start">Usuário</Text>
-                <TextInput className="text-white" onFocus={() => handleFocus('name')} onBlur={() => handleBlur('name')} style={[styles.input, {borderColor: isNameFocused ? 'blue' : 'gray'}]} onChangeText={setName} value={name}/>
+                <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('name')} onBlur={() => handleBlur('name')} style={[{borderColor: isNameFocused ? 'blue' : 'gray'}]} onChangeText={setName} value={name}/>
                 <Text className="text-black text-start">E-mail</Text>
-                <TextInput className="text-white" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
+                <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[{borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
                 <Text className="text-black text-start">Senha</Text>
-                <TextInput className="text-white" onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
+                <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
                 <Text className="text-black text-start">Confirmação sua senha</Text>
-                <TextInput className="text-white" onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[styles.input, {borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
+                <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[{borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
                 <View className="items-center mt-5">
-                    <BotaoPreto
+                    <BotaoBranco
                         name="Registro" 
                         onPress={register}
                     />
@@ -174,7 +174,7 @@ export default function CreateUser({ navigation }) {
             <View className="items-center mt-4">
                 <BotaoBranco
                     name="Acesso" 
-                    onPress={() => navigation.navigate('Auth')}
+                    onPress={() => navigation.navigate('Acesso')}
                 />
             </View>            
             <Modal modalTitle={requestSuccess ? estilo.modalTitle : estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={requestSuccess ? "Fazer login." : "Tentar cadastro."} buttonTitleStyle={requestSuccess ? estilo.buttonTitle : estilo.buttonTitleError}>

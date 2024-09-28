@@ -5,10 +5,9 @@ export default function BotaoBranco({ name, onPress }) {
   return (
     <TouchableOpacity
       onPress={() => {
-        console.log('Botão clicado!');
         onPress();
       }}
-      className="w-24 p-4 bg-white rounded-full"
+      className="w-24 p-4 bg-white rounded-full border border-gray-300"
 
     >
       <Text className="text-center text-black">{name}</Text>

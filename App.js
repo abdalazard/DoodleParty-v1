@@ -26,11 +26,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <AuthStack.Navigator initialRouteName={initialRoute}>
-      <AuthStack.Screen name="Auth" options={{ headerShown: false }}>
+      <AuthStack.Screen name="Acesso" options={{ headerShown: false, }}>
       {props => <Auth {...props} setIsAuthenticated={setIsAuthenticated} />}
       </AuthStack.Screen>
-        <AuthStack.Screen name="CreateUser" component={CreateUser} options={{ headerShown: false }}/>
-        <AppStack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
+        <AuthStack.Screen name="Cadastro" component={CreateUser} options={{ headerShown: false }}/>
+        <AppStack.Screen name="Inicio" component={Home} options={{ headerShown: false }}/>
       </AuthStack.Navigator>
     </NavigationContainer>
   );

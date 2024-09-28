@@ -22,9 +22,7 @@ export default function Auth({ setIsAuthenticated, navigation }) {
     const [modalText, setModalText] = useState('');
 
     const [anyFieldFocused, setAnyFieldFocused] = useState(false);
-    const [focusedField, setFocusedField] = useState(null);
-
-    
+    const [focusedField, setFocusedField] = useState(null);    
 
     NativeWindStyleSheet.setOutput({
         default: "native",
@@ -110,7 +108,7 @@ export default function Auth({ setIsAuthenticated, navigation }) {
         if (users.email === email && users.senha === password) { 
             console.log("Success!");
             setIsAuthenticated(true);
-            navigation.navigate('Home'); 
+            navigation.navigate('Inicio'); 
         } else {
             setModalMessage('Acesso não autorizado!');
             setModalVisible(true);
@@ -119,24 +117,26 @@ export default function Auth({ setIsAuthenticated, navigation }) {
     };
 
     return (
-        <ScrollView className="bg-black ">
-            <Logo />
-            <Card>
-                <Text className="text-black text-start">E-mail</Text>
-                <TextInput className="text-white" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
-                <Text className="text-black">Senha</Text>
-                <TextInput className="text-white" onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
-                <View className="mt-5">
-                    <BotaoPreto
-                        name="Acessar" 
-                        onPress={login}
-                    />
-                </View>                
-            </Card>
+        <ScrollView className="bg-gray-200">
+            <View className="mt-32" >
+                <Logo/>
+                <Card>
+                    <Text className="text-black text-start">E-mail</Text>
+                    <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')}  style={[{borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
+                    <Text className="text-black">Senha</Text>
+                    <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10"  onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
+                    <View className="mt-5">
+                        <BotaoBranco
+                            name="Acessar" 
+                            onPress={login}
+                        />
+                    </View>                
+                </Card>
+            </View>
             <View className="items-center mt-10">
                 <BotaoBranco
                     name="Cadastro"
-                    onPress={() => navigation.navigate('CreateUser')} 
+                    onPress={() => navigation.navigate('Cadastro')} 
                 />
             </View>            
             <Modal modalTitle={estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={"Me cadastrar"} buttonTitleStyle={estilo.buttonTitleError}>
