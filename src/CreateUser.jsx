@@ -157,13 +157,13 @@ export default function CreateUser({ navigation }) {
             {messageError ? <Text style={estilo.messageError}>{messageError}</Text> : ''}
             <Card className="mb-5 h-96">
                 <Text className="text-black text-start">Usuário</Text>
-                <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('name')} onBlur={() => handleBlur('name')} style={[{borderColor: isNameFocused ? 'blue' : 'gray'}]} onChangeText={setName} value={name}/>
+                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('name')} onBlur={() => handleBlur('name')} style={[{borderColor: isNameFocused ? 'blue' : 'gray'}]} onChangeText={setName} value={name}/>
                 <Text className="text-black text-start">E-mail</Text>
-                <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[{borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
+                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[{borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
                 <Text className="text-black text-start">Senha</Text>
-                <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
-                <Text className="text-black text-start">Confirmação sua senha</Text>
-                <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[{borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
+                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
+                <Text className="pl-2 text-black text-start">Confirmação sua senha</Text>
+                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[{borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
                 <View className="items-center mt-5">
                     <BotaoBranco
                         name="Registro" 

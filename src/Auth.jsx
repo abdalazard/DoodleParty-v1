@@ -122,9 +122,9 @@ export default function Auth({ setIsAuthenticated, navigation }) {
                 <Logo/>
                 <Card>
                     <Text className="text-black text-start">E-mail</Text>
-                    <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')}  style={[{borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
+                    <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')}  style={[{borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
                     <Text className="text-black">Senha</Text>
-                    <TextInput className="text-white w-full border border-gray-300 rounded-lg m-3 h-10"  onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
+                    <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10"  onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
                     <View className="mt-5">
                         <BotaoBranco
                             name="Acessar" 
