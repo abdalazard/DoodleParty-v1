@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
-import Inicio from '../../pages/Inicio';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Menu() {

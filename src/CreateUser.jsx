@@ -152,7 +152,7 @@ export default function CreateUser({ navigation }) {
     };
 
     return (
-        <ScrollView className="bg-gray-200 mt-5">
+        <ScrollView className="bg-gray-200  mt-5">
             <Logo/>
             {messageError ? <Text style={estilo.messageError}>{messageError}</Text> : ''}
             <Card className="mb-5 h-96">
