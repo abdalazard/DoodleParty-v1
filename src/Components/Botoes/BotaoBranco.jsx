@@ -7,10 +7,9 @@ export default function BotaoBranco({ name, onPress }) {
       onPress={() => {
         onPress();
       }}
-      className="w-24 p-4 bg-white rounded-full border border-gray-300"
-
+      className="p-4 bg-white rounded-xl border border-gray-300"
     >
-      <Text className="text-center text-black">{name}</Text>
+      <Text className="text-center text-black pl-20 pr-20">{name}</Text>
     </TouchableOpacity>
   );
 }

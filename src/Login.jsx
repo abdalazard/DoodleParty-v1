@@ -11,7 +11,7 @@ import BotaoBranco from './Components/Botoes/BotaoBranco';
 import BotaoPreto from './Components/Botoes/BotaoPreto';
 import { ScrollView } from 'react-native-gesture-handler';
 
-export default function Auth({ setIsAuthenticated, navigation }) {
+export default function Login({ setIsAuthenticated, navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const isEmailFocused = focusedField === 'email';
@@ -117,7 +117,7 @@ export default function Auth({ setIsAuthenticated, navigation }) {
     };
 
     return (
-        <ScrollView className="bg-gray-200">
+        <ScrollView className="bg-gray-200 flex">
             <View className="mt-32" >
                 <Logo/>
                 <Card>
@@ -133,7 +133,7 @@ export default function Auth({ setIsAuthenticated, navigation }) {
                     </View>                
                 </Card>
             </View>
-            <View className="items-center mt-10">
+            <View className="flex flex-1 justify-center items-center mt-10"> 
                 <BotaoBranco
                     name="Cadastro"
                     onPress={() => navigation.navigate('Cadastro')} 

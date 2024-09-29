@@ -60,7 +60,7 @@ export default function CreateUser({ navigation }) {
     const handleModalClose = () => {
         setModalVisible(false);
         if (redirectOnClose) {
-            navigation.navigate('Auth');
+            navigation.navigate('Login');
         } 
     };
 
@@ -152,7 +152,7 @@ export default function CreateUser({ navigation }) {
     };
 
     return (
-        <ScrollView className="bg-gray-200">
+        <ScrollView className="bg-gray-200 mt-5">
             <Logo/>
             {messageError ? <Text style={estilo.messageError}>{messageError}</Text> : ''}
             <Card className="mb-5 h-96">
@@ -174,7 +174,7 @@ export default function CreateUser({ navigation }) {
             <View className="items-center mt-4">
                 <BotaoBranco
                     name="Acesso" 
-                    onPress={() => navigation.navigate('Acesso')}
+                    onPress={() => navigation.navigate('Login')}
                 />
             </View>            
             <Modal modalTitle={requestSuccess ? estilo.modalTitle : estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={requestSuccess ? "Fazer login." : "Tentar cadastro."} buttonTitleStyle={requestSuccess ? estilo.buttonTitle : estilo.buttonTitleError}>
