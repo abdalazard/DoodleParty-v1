@@ -15,7 +15,7 @@ export default function Inicio() {
                     Tela do jogo
                 </View>
                 <View className="items-center mt-4"> 
-                    <BotaoBranco name="Start Game" onPress={() => alert('start game')} />
+                    <BotaoBranco name="Start Game" onPress={() => alert('Start Game')} />
                 </View>
                 </View> 
             </ScrollView>

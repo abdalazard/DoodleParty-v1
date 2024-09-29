@@ -39,13 +39,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-
-
-      {/* Deletar */}
-      {/* <AuthStack.Navigator>  
-        <AuthStack.Screen name="Inicio" component={Inicio} options={{ headerShown: false }}/>
-        <AuthStack.Screen name="Cadastro" component={CreateUser} options={{ headerShown: false }}/>
-        <AppStack.Screen name="Login" component={Auth} options={{ headerShown: false }}/>
-      </AuthStack.Navigator> */}
-      {/* Até aqui */}
