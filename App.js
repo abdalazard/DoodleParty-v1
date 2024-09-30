@@ -6,7 +6,7 @@ import CreateUser from './src/CreateUser';
 import Home from './src/pages/Home';
 import { NativeWindStyleSheet } from "nativewind";
 import Config from './src/pages/Config';
-import Play from './src/pages/Play';
+import MeusRegistros from './src/pages/MeusRegistros';
 
 const AuthStack = createStackNavigator();
 const AppStack = createStackNavigator();
@@ -34,7 +34,7 @@ export default function App() {
         <AuthStack.Screen name="CreateUser" component={CreateUser} options={{ headerShown: false }}/>
         <AppStack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
         <AppStack.Screen name="Config" component={Config} options={{ headerShown: false }}/>
-        <AppStack.Screen name="Play" component={Play} options={{ headerShown: false }}/>
+        <AppStack.Screen name="MeusRegistros" component={MeusRegistros} options={{ headerShown: false }}/>
       </AuthStack.Navigator>
     </NavigationContainer>
   );

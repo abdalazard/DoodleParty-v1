@@ -5,15 +5,15 @@ import Menu from '../Components/Navigation/Menu';
 import { View } from 'react-native-web';
 import { Text } from 'react-native';
 
-export default function Play() {
+export default function MeusRegistros() {
     console.log('Play')
     return (
         <View style={{ flex: 1 }} className="bg-black">
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}> 
                 <Logo />
-                <Text className="text-white">Play</Text>
+                <Text className="text-white">Meus Registros</Text>
 
-                <Menu telaAtual={"Play"}/>
+                <Menu telaAtual={"MeusRegistros"}/>
             </ScrollView>
         </View>
     );
