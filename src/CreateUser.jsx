@@ -8,6 +8,7 @@ import Logo from './Components/Logo/';
 import BotaoBranco from './Components/Botoes/BotaoBranco';
 import BotaoPreto from './Components/Botoes/BotaoPreto';
 import { ScrollView } from 'react-native-gesture-handler';
+import BotaoCinza from './Components/Botoes/BotaoCinza';
 
 export default function CreateUser({ navigation }) {
     const [name, setName] = useState(''); 
@@ -165,7 +166,7 @@ export default function CreateUser({ navigation }) {
                 <Text className="pl-2 text-black text-start">Confirmação sua senha</Text>
                 <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[{borderColor: isConfirmPasswordFocused ?? 'blue'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
                 <View className="items-center mt-5">
-                    <BotaoBranco
+                    <BotaoCinza
                         name="Registro" 
                         onPress={register}
                     />

@@ -1,16 +1,15 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-export default function BotaoPreto({ name, onPress }) { 
+export default function BotaoCinza({ name, onPress }) { 
   return (
     <TouchableOpacity
       onPress={() => {
         onPress();
       }}
-      className="w-24 p-4 bg-black rounded-full border-gray-300"
-
+      className="p-4 bg-gray-200 rounded-xl border-gray-300"
     >
-      <Text className="text-center text-white">{name}</Text>
+      <Text className="text-center text-black pl-20 pr-20">{name}</Text>
     </TouchableOpacity>
   );
 }

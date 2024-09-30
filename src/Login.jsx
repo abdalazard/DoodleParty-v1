@@ -10,6 +10,7 @@ import { NativeWindStyleSheet } from "nativewind";
 import BotaoBranco from './Components/Botoes/BotaoBranco';
 import BotaoPreto from './Components/Botoes/BotaoPreto';
 import { ScrollView } from 'react-native-gesture-handler';
+import BotaoCinza from './Components/Botoes/BotaoCinza';
 
 export default function Login({ setIsAuthenticated, navigation }) {
     const [email, setEmail] = useState('');
@@ -125,8 +126,8 @@ export default function Login({ setIsAuthenticated, navigation }) {
                     <TextInput className="pl-2 text-gray-400 w-full border border-gray-400 rounded-lg m-3 h-10" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')}  style={[{borderColor: isEmailFocused ?? 'blue'}]} onChangeText={setEmail} value={email}/>
                     <Text className="text-black">Senha</Text>
                     <TextInput className="pl-2 text-gray-400 w-full border border-gray-400 rounded-lg m-3 h-10"  onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ?? 'blue'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
-                    <View className="mt-5">
-                        <BotaoBranco
+                    <View className="flex flex-1 justify-center items-center mt-5"> 
+                        <BotaoCinza
                             name="Acessar" 
                             onPress={login}
                         />
