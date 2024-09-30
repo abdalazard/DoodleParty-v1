@@ -11,12 +11,12 @@ export default function Inicio() {
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}> 
                 <Logo/>
                 <View className="bg-gray-200 items-center justify-center">
-                <View className="h-96 w-[370px] border border-gray-100 items-center justify-center bg-white">
-                    Tela do jogo
-                </View>
-                <View className="items-center mt-4"> 
-                    <BotaoBranco name="Start Game" onPress={() => alert('Start Game')} />
-                </View>
+                    <View className="h-96 w-[370px] border border-gray-100 items-center justify-center bg-white">
+                        Tela do jogo
+                    </View>
+                    <View className="items-center mt-4"> 
+                        <BotaoBranco name="Start Game" onPress={() => alert('Start Game')} />
+                    </View>
                 </View> 
             </ScrollView>
             <Menu />
