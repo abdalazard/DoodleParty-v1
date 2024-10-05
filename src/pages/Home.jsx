@@ -14,7 +14,7 @@ export default function Home() {
                 <Logo estilo="w-20 h-20"/>
                 <Text className="text-white text-center">Bem vindo [insira usuário]</Text>
 
-                <Text className="text-white text-center">Tema do dia</Text>
+                <Text className="text-white text-center">Tema do dia: Vampiros com fome no RJ</Text>
             </View>
             <View  className="w-full">
                 <Game />
