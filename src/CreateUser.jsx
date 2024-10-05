@@ -6,7 +6,6 @@ import { getApiUrl } from './utils/api';
 import Modal from './Components/Modal/Modal';
 import Logo from './Components/Logo/';
 import BotaoBranco from './Components/Botoes/BotaoBranco';
-import BotaoPreto from './Components/Botoes/BotaoPreto';
 import { ScrollView } from 'react-native-gesture-handler';
 import BotaoCinza from './Components/Botoes/BotaoCinza';
 
@@ -15,6 +14,10 @@ export default function CreateUser({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [nascimento, setNascimento] = useState('');
+    const [sexo, setSexo] = useState('');
+    const [contrato, setContrato] = useState(false);
+
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const [modalText, setModalText] = useState('');
@@ -76,6 +79,9 @@ export default function CreateUser({ navigation }) {
                 email: email,
                 password: password,
                 password_confirmation: confirmPassword,
+                nascimento: nascimento,
+                sexo: sexo,
+                contrato: contrato
             }),
         })
         .then((response) => {
@@ -153,7 +159,7 @@ export default function CreateUser({ navigation }) {
     };
 
     return (
-        <ScrollView className="bg-gray-200  mt-5">
+        <ScrollView className="bg-gray-200">
             <Logo/>
             {messageError ? <Text style={estilo.messageError}>{messageError}</Text> : ''}
             <Card className="mb-5 h-96">
@@ -165,14 +171,25 @@ export default function CreateUser({ navigation }) {
                 <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ?? 'blue'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
                 <Text className="pl-2 text-black text-start">Confirmação sua senha</Text>
                 <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[{borderColor: isConfirmPasswordFocused ?? 'blue'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
+                <Text className="pl-2 text-black text-start">Nascimento(DD/MM/AAAA)</Text>
+                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10"  secureTextEntry={true} onChangeText={setNascimento} value={nascimento}/>
+                <Text className="pl-2 text-black text-start">Sexo</Text>
+                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" secureTextEntry={true} onChangeText={setSexo} value={sexo}/>
+                <View className="flex items-center w-56">
+                    <input type="checkbox" class="appearance-none checked:bg-blue-500 ..." />
+                    <Text className="ml-2"> {/* Adicionei a classe ml-2 para espaçamento */}
+                        Li e aceito os Termos de Uso
+                    </Text>
+                </View>
+                
                 <View className="items-center mt-5">
                     <BotaoCinza
-                        name="Registro" 
+                        name="Cadastro" 
                         onPress={register}
                     />
                 </View>
             </Card>
-            <View className="items-center mt-4">
+            <View className="items-center mt-4 mb-10">
                 <BotaoBranco
                     name="Acesso" 
                     onPress={() => navigation.navigate('Login')}

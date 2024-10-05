@@ -8,10 +8,10 @@ import Modal from './Components/Modal/Modal';
 import Logo from './Components/Logo';
 import { NativeWindStyleSheet } from "nativewind";
 import BotaoBranco from './Components/Botoes/BotaoBranco';
+import BotaoPreto from './Components/Botoes/BotaoPreto';
 import { ScrollView } from 'react-native-gesture-handler';
-import BotaoCinza from './Components/Botoes/BotaoCinza';
 
-export default function Login({ setIsAuthenticated, navigation }) {
+export default function Auth({ setIsAuthenticated, navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const isEmailFocused = focusedField === 'email';
@@ -22,8 +22,8 @@ export default function Login({ setIsAuthenticated, navigation }) {
     const [modalText, setModalText] = useState('');
 
     const [anyFieldFocused, setAnyFieldFocused] = useState(false);
-    const [focusedField, setFocusedField] = useState(null);    
-
+    const [focusedField, setFocusedField] = useState(null);
+    
     NativeWindStyleSheet.setOutput({
         default: "native",
     });
@@ -91,12 +91,7 @@ export default function Login({ setIsAuthenticated, navigation }) {
     
         return () => backHandler.remove();
     }, [anyFieldFocused, focusedField]);
-
-    const handleModalClose = () => {
-        setModalVisible(false);
-    };
-
-    
+   
     
     const users = {
         "id": 1,
@@ -108,7 +103,7 @@ export default function Login({ setIsAuthenticated, navigation }) {
         if (users.email === email && users.senha === password) { 
             console.log("Success!");
             setIsAuthenticated(true);
-            navigation.navigate('Inicio'); 
+            navigation.navigate('Home'); 
         } else {
             setModalMessage('Acesso não autorizado!');
             setModalVisible(true);
@@ -116,27 +111,46 @@ export default function Login({ setIsAuthenticated, navigation }) {
         }
     };
 
+    useEffect(() => {
+        const backAction = () => {
+            if (anyFieldFocused) {
+                handleBlur(focusedField);
+                return true;
+            }
+            return false;
+        };
+    
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            backAction
+        );
+    
+        return () => backHandler.remove();
+    }, [anyFieldFocused, focusedField]);
+
+    const handleModalClose = () => {
+        setModalVisible(false);
+    };
+
     return (
-        <ScrollView className="bg-gray-200 flex">
-            <View className="mt-32" >
-                <Logo/>
-                <Card>
-                    <Text className="text-black text-start">E-mail</Text>
-                    <TextInput className="pl-2 text-gray-400 w-full border border-gray-400 rounded-lg m-3 h-10" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')}  style={[{borderColor: isEmailFocused ?? 'blue'}]} onChangeText={setEmail} value={email}/>
-                    <Text className="text-black">Senha</Text>
-                    <TextInput className="pl-2 text-gray-400 w-full border border-gray-400 rounded-lg m-3 h-10"  onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ?? 'blue'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
-                    <View className="flex flex-1 justify-center items-center mt-5"> 
-                        <BotaoCinza
-                            name="Acessar" 
-                            onPress={login}
-                        />
-                    </View>                
-                </Card>
-            </View>
-            <View className="flex flex-1 justify-center items-center mt-10"> 
+        <ScrollView className="bg-black">
+            <Logo />
+            <Card>
+                <Text className="text-black text-start">E-mail</Text>
+                <TextInput className="text-white" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
+                <Text className="text-black">Senha</Text>
+                <TextInput className="text-white" onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
+                <View className="mt-5">
+                    <BotaoPreto
+                        name="Acessar" 
+                        onPress={login}
+                    />
+                </View>                
+            </Card>
+            <View className="items-center mt-10">
                 <BotaoBranco
                     name="Cadastro"
-                    onPress={() => navigation.navigate('Cadastro')} 
+                    onPress={() => navigation.navigate('CreateUser')} 
                 />
             </View>            
             <Modal modalTitle={estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={"Me cadastrar"} buttonTitleStyle={estilo.buttonTitleError}>

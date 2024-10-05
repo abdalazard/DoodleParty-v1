@@ -17,6 +17,9 @@ export default function Inicio() {
                     <View className="items-center mt-4"> 
                         <BotaoBranco name="Start Game" onPress={() => alert('Start Game')} />
                     </View>
+                    <View className="items-center mt-4"> 
+                        <BotaoBranco name="Join Room" onPress={() => alert('Join Room')}/>
+                    </View>
                 </View> 
             </ScrollView>
             <Menu />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-export default function BotaoBranco({ name, onPress }) { 
+export default function BotaoBranco({ name, onPress,  }) { 
   return (
     <TouchableOpacity
       onPress={() => {
