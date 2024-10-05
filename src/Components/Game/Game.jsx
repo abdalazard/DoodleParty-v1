@@ -6,10 +6,8 @@ import ListaDeArtes from '../ListaDeArtes/ListaDeArtes';
 export default function Game() {
 
   return (
-    <View> 
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }} className="overflow-scroll"> 
-        <ListaDeArtes /> 
-      </ScrollView>
+    <View>
+      <ListaDeArtes />
     </View>
   );
 }

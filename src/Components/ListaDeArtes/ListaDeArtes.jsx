@@ -1,50 +1,47 @@
 import React from 'react';
-import { View, Text} from 'react-native';
+import { View, Text, FlatList } from 'react-native';
+
+const data = [
+  {
+    id: '1',
+    titulo: 'Vampiros Com fome no RJ',
+    autor: '@abdalazard',
+  },
+  {
+    id: '2',
+    titulo: 'Uma taça de vinho e uma paisagem',
+    autor: '@danefrida',
+  },
+  {
+    id: '3',
+    titulo: 'Animais em cidades pós-apocalipse',
+    autor: '@lhuaan22',
+  },
+  {
+    id: '3',
+    titulo: 'Animais em cidades pós-apocalipse',
+    autor: '@lhuaan22',
+  },
+];
 
 export default function ListaDeArtes() {
+  const renderItem = ({ item }) => (
+    <View className="border border-gray-400">
+      <View className="h-52">
+      </View>
+      <View className="flex flex-row justify-between py-3">
+        <Text className="text-white text-center ml-2">{item.titulo}</Text>
+        <Text className="text-white text-center mr-2">{item.autor}</Text>
+      </View>
+    </View>
+  );
+
   return (
-    <View> 
-      <View className="border border-gray-400">
-        <View className="h-52">
-          {/* Conteúdo da arte */}
-        </View>
-        <View className="flex flex-row justify-between py-3">
-          <Text className="text-white text-center ml-2">
-            Vampiros Com fome no RJ
-          </Text>
-          <Text className="text-white text-center mr-2">
-            @abdalazard
-          </Text>
-        </View>    
-      </View>
-
-      <View className="border border-gray-400">
-        <View className="h-52">
-          {/* Conteúdo da arte */}
-        </View>
-        <View className="flex flex-row justify-between py-3">
-          <Text className="text-white text-center ml-2">
-            Uma taça de vinho e uma paisagem
-          </Text>
-          <Text className="text-white text-center mr-2">
-            @danefrida
-          </Text>
-        </View>
-      </View>
-
-      <View className="border border-gray-400 ">
-        <View className="h-52">
-          {/* Conteúdo da arte */}
-        </View>
-        <View className="flex flex-row justify-between py-3">
-          <Text className="text-white text-center ml-2">
-            Animais em cidades pós-apocalipse
-          </Text>
-          <Text className="text-white text-center mr-2">
-            @lhuaan22
-          </Text>
-        </View>
-      </View>
-    </View> 
+    <FlatList
+      className="border border-gray-400 mb-2 h-[480px]"
+      data={data}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+    />
   );
 }

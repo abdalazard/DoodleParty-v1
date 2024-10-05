@@ -9,7 +9,7 @@ import MenuRoom from '../Components/MenuRoom/MenuRoomInicio';
 export default function Home() {
     console.log('Home')
     return (
-        <View className="bg-black items-center">
+        <View className="bg-black items-center h-full">
             <View> 
                 <Logo estilo="w-20 h-20"/>
                 <Text className="text-white text-center">Bem vindo [insira usuário]</Text>
@@ -19,7 +19,7 @@ export default function Home() {
             <View  className="w-full">
                 <Game />
             </View>
-            <View  className="mb-10">
+            <View className="mb-10">
                 <MenuRoom />
             </View>
             <Menu telaAtual={"Home"}/>        
