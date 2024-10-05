@@ -153,7 +153,7 @@ export default function CreateUser({ navigation }) {
 
     return (
         <ScrollView className="bg-black">
-            <Logo/>
+            <Logo estilo="w-48 h-48"/>
             {messageError ? <Text style={estilo.messageError}>{messageError}</Text> : ''}
             <Card className="mb-5 h-96">
                 <Text className="text-black text-start">Usuário</Text>
@@ -177,9 +177,28 @@ export default function CreateUser({ navigation }) {
                     onPress={() => navigation.navigate('Auth')}
                 />
             </View>            
-            <Modal modalTitle={requestSuccess ? estilo.modalTitle : estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={requestSuccess ? "Fazer login." : "Tentar cadastro."} buttonTitleStyle={requestSuccess ? estilo.buttonTitle : estilo.buttonTitleError}>
-                <Text style={estilo.modalText}>{modalText}</Text>
-            </Modal>            
+            <Modal 
+                modalTitle={
+                    requestSuccess ? (
+                    <Text className="font-bold text-green-500 text-3xl text-center mb-6">Sucesso!</Text> 
+                    ) : (
+                    <Text className="font-bold text-red-500 text-3xl text-center mb-6">Erro</Text>
+                    )
+                }
+                visible={modalVisible} 
+                onClose={() => handleModalClose()} 
+                title={modalMessage} 
+                buttonTitle={requestSuccess ? "Fazer login." : "Tentar cadastro."} 
+                buttonTitleStyle={
+                    requestSuccess ? (
+                    <Text className="mt-4 bg-green-500 text-2xl rounded-md">Fazer login.</Text>
+                    ) : (
+                    <Text className="mt-4 bg-red-500 text-2xl rounded-md">Tentar cadastro.</Text>
+                    )
+                }
+                >
+                <Text className="text-center">{modalText}</Text> {/* Usando classe padrão para centralizar o texto */}
+            </Modal>           
         </ScrollView>
     );
 }    

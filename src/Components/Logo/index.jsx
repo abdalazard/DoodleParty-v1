@@ -1,17 +1,17 @@
 import React from 'react';
 import { Image, View, Text} from 'react-native';
 
-export default function Logo() {
-
+export default function Logo({estilo}) {
   return (
-    <View>
-      <View className="flex flex-col items-center w-full mt-12 mb-10"> 
-        <Text className="self-end m-2 mr-6 text-zinc-600">No matter where</Text>
+      <View className="flex flex-col items-center mt-12 mb-10"> 
         <Text className="mb-5 text-6xl font-semibold text-center text-white">DoodleParty</Text>
         <View className="items-center">
-          <Image source={require('../../../assets/logo.png')} className="rounded-full w-36 h-36"/> 
+          <Image 
+            source={require('../../../assets/logo.png')} 
+            className={`rounded-full ${estilo ? estilo : 'h-36 w-36'}`} 
+            style={{ width: estilo ? undefined : 36, height: estilo ? undefined : 36 }} 
+          /> 
         </View>
-    </View>
-    </View>
+      </View>
   );
 }

@@ -135,7 +135,7 @@ export default function Auth({ setIsAuthenticated, navigation }) {
 
     return (
         <ScrollView className="bg-black">
-            <Logo />
+            <Logo estilo="w-48 h-48"/>
             <Card>
                 <Text className="text-black text-start">E-mail</Text>
                 <TextInput className="text-white" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
@@ -154,45 +154,16 @@ export default function Auth({ setIsAuthenticated, navigation }) {
                     onPress={() => navigation.navigate('CreateUser')} 
                 />
             </View>            
-            <Modal modalTitle={estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={"Me cadastrar"} buttonTitleStyle={estilo.buttonTitleError}>
+            {/* <Modal 
+                modalTitle={<Text className="font-bold text-red-500 text-3xl text-center mb-6">Erro</Text>} 
+                visible={modalVisible} 
+                onClose={() => handleModalClose()} 
+                title={modalMessage} 
+                buttonTitle={"Me cadastrar"} 
+                buttonTitleStyle={<Text className="mt-4 bg-green-500 text-2xl rounded-md">Me cadastrar</Text>} 
+                >
                 <Text className="m-4 text-center text-white">{modalText}</Text>
-            </Modal>
+            </Modal> */}
         </ScrollView>
     );
 }
-
-const estilo = StyleSheet.create({
-    buttonTitle: {
-        marginTop: 10,
-        backgroundColor: '#12e207',
-        fontSize: 20,
-        borderRadius: 5,
-    },
-    buttonTitleError: {
-        marginTop: 10,
-        backgroundColor: '#12e207',
-        fontSize: 20,
-        borderRadius: 5,
-    },
-    modalTitle: {
-        fontWeight: 'bold',
-        color: '#12e207',
-        fontSize: 30,
-        textAlign: 'center',
-        marginBottom: 20,
-    },
-    modalTitleError: {
-        fontWeight: 'bold',
-        color: '#ff0a0a',
-        fontSize: 30,
-        textAlign: 'center',
-        marginBottom: 20,
-    },
-    messageError: {
-        color: '#ff0a0a',
-        fontSize: 15,
-        textAlign: 'center',
-        marginBottom: 60,
-    },
-
-});
