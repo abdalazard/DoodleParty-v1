@@ -4,7 +4,7 @@ import { View, Text, FlatList } from 'react-native';
 const data = [
   {
     id: '1',
-    titulo: 'Vampiros Com fome no RJ',
+    titulo: 'Vampiros com fome no RJ',
     autor: '@abdalazard',
   },
   {
@@ -18,7 +18,7 @@ const data = [
     autor: '@lhuaan22',
   },
   {
-    id: '3',
+    id: '4',
     titulo: 'Animais em cidades pós-apocalipse',
     autor: '@lhuaan22',
   },

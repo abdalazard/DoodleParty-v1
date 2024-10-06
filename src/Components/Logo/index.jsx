@@ -9,7 +9,6 @@ export default function Logo({estilo}) {
           <Image 
             source={require('../../../assets/logo.png')} 
             className={`rounded-full ${estilo ? estilo : 'h-36 w-36'}`} 
-            style={{ width: estilo ? undefined : 36, height: estilo ? undefined : 36 }} 
           /> 
         </View>
       </View>

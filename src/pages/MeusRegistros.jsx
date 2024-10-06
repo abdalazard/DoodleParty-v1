@@ -2,8 +2,7 @@ import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import Logo from '../Components/Logo';
 import Menu from '../Components/Navigation/Menu';
-import { View } from 'react-native-web';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 export default function MeusRegistros() {
     console.log('Play')

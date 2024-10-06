@@ -135,7 +135,7 @@ export default function Auth({ setIsAuthenticated, navigation }) {
 
     return (
         <ScrollView className="bg-black">
-            <Logo estilo="w-48 h-48"/>
+            <Logo estilo={"h-48 w-48"} /> 
             <Card>
                 <Text className="text-black text-start">E-mail</Text>
                 <TextInput className="text-white" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
