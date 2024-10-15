@@ -7,10 +7,10 @@ import Menu from '../Components/Navigation/Menu';
 
 export default function Configuracoes() {
     return (
-        <View style={{ flex: 1 }} className="bg-gray-200">
+        <View style={{ flex: 1 }} className="bg-gray-500">
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}> 
                 <Logo/>
-                <View className="bg-gray-200 items-center justify-center">
+                <View className="bg-gray-500 items-center justify-center">
                     <View className="h-96 w-[370px] border border-gray-100 items-center justify-center bg-white">
                         Configurações
                     </View>

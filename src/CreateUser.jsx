@@ -159,28 +159,37 @@ export default function CreateUser({ navigation }) {
     };
 
     return (
-        <ScrollView className="bg-gray-200">
+        <ScrollView className="bg-gray-500">
             <Logo/>
             {messageError ? <Text style={estilo.messageError}>{messageError}</Text> : ''}
-            <Card className="mb-5 h-96">
-                <Text className="text-black text-start">Usuário</Text>
-                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('name')} onBlur={() => handleBlur('name')} style={[{borderColor: isNameFocused ?? 'blue'}]} onChangeText={setName} value={name}/>
-                <Text className="text-black text-start">E-mail</Text>
-                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[{borderColor: isEmailFocused ?? 'blue'}]} onChangeText={setEmail} value={email}/>
-                <Text className="text-black text-start">Senha</Text>
-                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ?? 'blue'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
-                <Text className="pl-2 text-black text-start">Confirmação sua senha</Text>
-                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[{borderColor: isConfirmPasswordFocused ?? 'blue'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
-                <Text className="pl-2 text-black text-start">Nascimento(DD/MM/AAAA)</Text>
-                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10"  secureTextEntry={true} onChangeText={setNascimento} value={nascimento}/>
-                <Text className="pl-2 text-black text-start">Sexo</Text>
-                <TextInput className="pl-2 text-gray-400 w-full border border-gray-300 rounded-lg m-3 h-10" secureTextEntry={true} onChangeText={setSexo} value={sexo}/>
-                <View className="flex items-center w-56">
-                    <input type="checkbox" class="appearance-none checked:bg-blue-500 ..." />
-                    <Text className="ml-2"> {/* Adicionei a classe ml-2 para espaçamento */}
+            <Card className="mb-5 h-96 gap-2">
+                <View className="flex-start"> 
+                    <Text className="text-white">Usuário</Text>
+                </View>
+                
+                <TextInput className="text-white w-full border border-gray-300 rounded-lg h-10 pl-3" onFocus={() => handleFocus('name')} onBlur={() => handleBlur('name')} style={[{borderColor: isNameFocused ?? 'blue'}]} onChangeText={setName} value={name}/>
+
+                <Text className="text-white text-start">E-mail</Text>
+                <TextInput className="text-white w-full border border-gray-300 rounded-lg h-10 pl-3" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[{borderColor: isEmailFocused ?? 'blue'}]} onChangeText={setEmail} value={email}/>
+
+                <Text className="text-white text-start">Senha</Text>
+                <TextInput className="text-white w-full border border-gray-300 rounded-lg h-10 pl-3" onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ?? 'blue'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
+
+                <Text className="text-white text-start">Confirmação sua senha</Text>
+                <TextInput className="text-white w-full border border-gray-300 rounded-lg h-10 pl-3" onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[{borderColor: isConfirmPasswordFocused ?? 'blue'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
+
+                <Text className="text-white text-start">Nascimento(DD/MM/AAAA)</Text>
+                <TextInput className="text-white w-full border border-gray-300 rounded-lg h-10 pl-3"  secureTextEntry={true} onChangeText={setNascimento} value={nascimento}/>
+
+                <Text className=" text-white text-start">Sexo</Text>
+                <TextInput className="text-white w-full border border-gray-300 rounded-lg h-10 pl-3" secureTextEntry={true} onChangeText={setSexo} value={sexo}/>
+                
+                <View className="flex items-center flex-row"> 
+                    <input type="checkbox" class="appearance-none checked:bg-blue-500 ml-3" style={{ alignSelf: 'flex-start' }} />
+                    <Text className="ml-5 text-white mb-5 flex items-center"> 
                         Li e aceito os Termos de Uso
                     </Text>
-                </View>
+                </View>                
                 
                 <View className="items-center mt-5">
                     <BotaoCinza

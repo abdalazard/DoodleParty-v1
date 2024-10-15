@@ -5,7 +5,7 @@ import React from 'react';
 export default function Card({ children }) {
   return (
       <View className="bg-grey items-center justify-center">
-        <View className="items-center justify-center p-6 bg-white border border-gray-300 rounded-lg ">
+        <View className="p-6 bg-gray-500 border border-white rounded-lg ">
             {children}
         </View>
     </View >

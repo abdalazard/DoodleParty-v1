@@ -117,14 +117,14 @@ export default function Login({ setIsAuthenticated, navigation }) {
     };
 
     return (
-        <ScrollView className="bg-gray-200 flex">
+        <ScrollView className="bg-gray-500 flex">
             <View className="mt-32" >
                 <Logo/>
                 <Card>
-                    <Text className="text-black text-start">E-mail</Text>
-                    <TextInput className="pl-2 text-gray-400 w-full border border-gray-400 rounded-lg m-3 h-10" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')}  style={[{borderColor: isEmailFocused ?? 'blue'}]} onChangeText={setEmail} value={email}/>
-                    <Text className="text-black">Senha</Text>
-                    <TextInput className="pl-2 text-gray-400 w-full border border-gray-400 rounded-lg m-3 h-10"  onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ?? 'blue'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
+                    <Text className="text-white ml-2 font-medium text-xl">E-mail</Text>
+                    <TextInput className="text-white w-full border border-gray-400 rounded-lg h-10 mb-5 pl-3" onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')}  style={[{borderColor: isEmailFocused ?? 'blue'}]} onChangeText={setEmail} value={email}/>
+                    <Text className="text-white ml-2 font-medium text-xl">Senha</Text>
+                    <TextInput className="text-white w-full border border-gray-400 rounded-lg h-10 pl-3"  onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[{borderColor: isPasswordFocused ?? 'blue'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
                     <View className="flex flex-1 justify-center items-center mt-5"> 
                         <BotaoCinza
                             name="Acessar" 
